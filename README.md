@@ -123,9 +123,11 @@ This function updates the hosts file under devops folder with the public dns nam
 
 
 ##How to verify solution:
-Please login into your EC2 instance
-```sudo superviorctl```
-will show if the flask app is running on not, The flask app should be running on localhost:9090
+Please login into your EC2 instance and run
+```
+sudo superviorctl
+```
+The above command will show if the flask app is running on not, The flask app should be running on localhost:9090
 
 
 ##References:
