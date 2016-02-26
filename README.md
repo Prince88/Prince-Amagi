@@ -1,5 +1,5 @@
 # Prince-Amagi
-Requirements to get started.
+#Requirements to get started.
  1) Install any version of python2.7 
  2) Install ansible
  3) Install boto package for Python preferably v2.39
@@ -12,7 +12,7 @@ Requirements to get started.
 
 Boto reads credentials from file ~/.boto in unix platform and from C:\Users\<username>\boto.config in windows platform
 
-Steps to get started:
+#Steps to get started:
  1) clone the repo in a directory of your choice in your system.
   git clone https://github.com/Prince88/Prince-Amagi.git - this will create a folder Prince-Amagi in the path you cloned the repo
  2) cd Prince-Amagi
@@ -22,7 +22,7 @@ Steps to get started:
 once everything goes well http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html
 and instance is created, script will print the public dns name of the instance and further would try to setup the server and deploy the app using ansible-playbooks.
 
-Under folder devops, you can find two yml files:
+#Under folder devops, you can find two yml files:
  1) setup_server.yml - It is responsible for setting up the server with all the necessary installations like, git, python, ngnix,  supervisord etc.
  2) deploy.yml - It is responsible for deploying the app by cloning the repo from git, creating virtual env for python and install depencecies in the invornment by reading requirements.txt etc.
 
@@ -36,7 +36,7 @@ in case you see something like:
    at this point you will see your app running on the server.
  P.S I am still working on getting these commands together in the yml.
  
- References:
+ #References:
   http://boto.cloudhackers.com/en/latest/
   http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html
   http://docs.ansible.com/ansible/playbooks_intro.html
