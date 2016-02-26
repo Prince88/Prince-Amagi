@@ -23,7 +23,7 @@ Boto reads credentials from file ~/.boto in unix platform and from C:\Users\<use
 
 once everything goes well and instance is created, script will print the public dns name of the instance and further would try to setup the server and deploy the app using ansible-playbooks.
 
-#Under folder devops, you can find two yml files:
+##Under folder devops, you can find two yml files:
  1. setup_server.yml - It is responsible for setting up the server with all the necessary installations like, git, python, ngnix,  supervisord etc.
  2. deploy.yml - It is responsible for deploying the app by cloning the repo from git, creating virtual env for python and install depencecies in the invornment by reading requirements.txt etc.
 
