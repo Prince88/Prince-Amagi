@@ -25,6 +25,7 @@ once everything goes well and instance is created, script will print the public 
 
 ##Under folder devops, you can find two yml files:
  1. setup_server.yml - It is responsible for setting up the server with all the necessary installations like, git, python, ngnix,  supervisord etc.
+
 ####Important Tasks Under setup_server.yml
 
 These tasks install the various pieces of software necessary for running the application
