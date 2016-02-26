@@ -144,7 +144,7 @@ def create_instance(ami='ami-9abea4fb'):
 			if instance.update() == 'running':
 				break
 
-		print "Instance is up and running and can be reached @ %s " % instance.public_dns_name
+		print "\nInstance is up and running and can be reached @ %s \n\n " % instance.public_dns_name
 		return instance.public_dns_name
 	except Exception as e:
 		raise Exception("Instance Creation Failed For - %s " %str(e))
@@ -165,20 +165,20 @@ def server_setup_deploy():
 		hostname = create_instance()
 		#Sleep for sometime be it 120 secs, time for status check to be successfull
 		#TBD - Need a better way to check the reachability of ec2 instance
-		print "Waiting for SSHD service on the server to be active"
+		print "\n\nNEXT: Waiting for SSHD service on the server to be active\n\n"
 		time.sleep(120)
 		#add hostname of the instance created in hosts file, we will use this hosts file to configure server
 		val = _runLocalCommand('echo %s >> devops/hosts' % hostname)
 		if val[1]:
 			raise Exception("Failed to add instance hostname into hosts file : %s " %val[0])
-		print "Running Commands to install necessary modules on server -- It will take some time!"
+		print "\n\nNEXT: Running Commands to install necessary modules on server -- It will take some time!\n\n"
 		val = _runLocalCommand("ansible-playbook devops/setup_server.yml -i devops/hosts --private-key=%s " % (key_dir+os.sep+ec2key_name+'.pem'))
 		if val[1]:
 			raise Exception("Failed to setup_server : %s " % val[0])
 		else:
 			print val[0]
-			print "Done with Setting up Server"
-		print "Deploying App -- Will take some time"
+			print "\n\nDone with Setting up Server\n\n"
+		print "\n\nNEXT: Deploying App -- Will take some time\n\n"
 		val = _runLocalCommand("ansible-playbook devops/deploy.yml -i devops/hosts --private-key=%s " % (key_dir+os.sep+ec2key_name+'.pem'))
 		if val[1]:
 			raise Exception("Failed to deploy App : %s " % val[0])
