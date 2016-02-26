@@ -28,16 +28,6 @@ once everything goes well and instance is created, script will print the public 
  2. deploy.yml - It is responsible for deploying the app by cloning the repo from git, creating virtual env for python and install depencecies in the invornment by reading requirements.txt etc.
 
 If everything goes right, you will see your app hosted on the ec2 instance created earlier.
-in case you see something like:
-  ```
-  FAILED! => {"changed": false, "failed": true, "msg": "ERROR (no such process)", "name": "hello_flask"}
-  Login into your ec2 instance and run following commands:
-  supervisorctl
-  supervisor>update
-  supervisor>avail
-  
-  ```
-  At this point you will see your app running on the server.
 
 ##Code Explained:
 
