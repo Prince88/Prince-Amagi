@@ -25,7 +25,81 @@ once everything goes well and instance is created, script will print the public 
 
 ##Under folder devops, you can find two yml files:
  1. setup_server.yml - It is responsible for setting up the server with all the necessary installations like, git, python, ngnix,  supervisord etc.
+####Important Tasks Under setup_server.yml
+
+These tasks install the various pieces of software necessary for running the application
+```
+- name: add nginx ppa
+  action: apt_repository repo=ppa:nginx/stable state=present
+
+- name: install common packages needed for python application development
+  action: apt pkg=$item state=installed
+  with_items:
+    - libpq-dev
+    - libmysqlclient-dev
+    - libxml2-dev
+    - libjpeg62
+    - libjpeg62-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+
+- name: install pip
+  action: easy_install name=pip
+    
+- name: install various libraries with pip
+  action: pip name=$item state=present
+  with_items:
+    - virtualenv
+    - supervisor
+    - uwsgi
+```
+
+With these tasks the default Nginx site is removed and a new Nginx configuration file is created from the template under devops folder
+```
+- name: remove default nginx site
+  action: file path=/etc/nginx/sites-enabled/default state=absent
+
+- name: write nginx.conf
+  action: template src=templates/nginx.conf dest=/etc/nginx/nginx.conf
+```
+
+The first task creates a directory to contain various program configurations. Following this a Supervisor configuration file is created from the custom template which will load all files located in the aforementioned directory. The third and fourth tasks setup Supervisor to run as a service and run when the system starts up.
+```
+- name: create supervisord config folder
+  action: file dest=/etc/supervisor state=directory owner=root
+
+- name: create supervisord config
+  action: template src=templates/supervisord.conf dest=/etc/supervisord.conf
+
+- name: create supervisord init script
+  action: template src=templates/supervisord.sh dest=/etc/init.d/supervisord mode=0755
+
+- name: start supervisord service and have it run during system startup
+  action: service name=supervisord state=started enabled=yes
+```
+This task simply creates a directory to hold all the server's web applications.
+```
+- name: create webapps directory
+  action: file dest=/srv/webapps state=directory
+ ```
+ 
  2. deploy.yml - It is responsible for deploying the app by cloning the repo from git, creating virtual env for python and install depencecies in the invornment by reading requirements.txt etc.
+
+####Important Tasks Under deploy.yml
+
+This task ensures that log directory is in place 
+```
+- name: ensure log directory
+  action: file dest={{ webapps_dir }}/{{ app_name }}/log state=directory
+```
+
+This task retrieves the source code form the remote git repository and checks out the specified version/branch
+```
+- name: deploy code from repository
+  action: git repo={{ repo_url }} dest={{ webapps_dir }}/{{ app_name }}/src remote={{ repo_remote }} version={{ repo_version }}
+
+```
 
 If everything goes right, you will see your app hosted on the ec2 instance created earlier.
 
@@ -45,6 +119,7 @@ This function creates and launches an t2.micro instances of ubuntu(ami-9abea4fb)
 
 5. Function `def server_setup_deploy()`
 This function updates the hosts file under devops folder with the public dns name of the newly created instance, further it uses anisble-playbook to execute commands based on the file setup_server.yml and setups the server with initial requirements. It also reads deploy.yml under devops folder and deploys the flask app on the server using supervisorctl module.
+
 
 
 ##References:
