@@ -127,6 +127,7 @@ This function updates the hosts file under devops folder with the public dns nam
  1. http://boto.cloudhackers.com/en/latest/
  2. http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html
  3. http://docs.ansible.com/ansible/playbooks_intro.html
- 4. http://mattupstate.com/python/devops/2012/08/07/flask-wsgi-application-deployment-with-ubuntu-ansible-nginx-supervisor-and-uwsgi.html
+ 4. https://www.digitalocean.com/community/tutorials/understanding-the-nginx-configuration-file-structure-and-configuration-contexts 
+ 5. http://mattupstate.com/python/devops/2012/08/07/flask-wsgi-application-deployment-with-ubuntu-ansible-nginx-supervisor-and-uwsgi.html
 
 
