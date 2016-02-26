@@ -6,9 +6,9 @@
   4. Install git .
   5. Create an aws account .
   6. Create an IAM user for the account and get the aws_access_key_id and aws_secret_access_key, save them in file ~/.boto in the format given below:
-  ⋅⋅* [Credentials]
-  ⋅⋅* aws_access_key_id=<your access key id>
-  ⋅⋅* aws_secret_access_key=<your secret access key>
+    `[Credentials]`
+    `aws_access_key_id=<your access key id>`
+    `aws_secret_access_key=<your secret access key>`
 
 Boto reads credentials from file ~/.boto in unix platform and from C:\Users\<username>\boto.config in windows platform
 
