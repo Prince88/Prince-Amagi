@@ -17,8 +17,8 @@ Boto reads credentials from file ~/.boto in unix platform and from C:\Users\<use
 ##Steps to get started:
  1. clone the repo in a directory of your choice in your system.
   `git clone https://github.com/Prince88/Prince-Amagi.git` - this will create a folder Prince-Amagi in the path you cloned the repo
- 2. cd Prince-Amagi
- 3. python LaunchEC2instance.py
+ 2. `cd Prince-Amagi`
+ 3. `python LaunchEC2instance.py`
  This will start creation/launch of an EC2 instance.
 
 once everything goes well and instance is created, script will print the public dns name of the instance and further would try to setup the server and deploy the app using ansible-playbooks.
