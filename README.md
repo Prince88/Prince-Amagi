@@ -6,10 +6,12 @@
   4. Install git .
   5. Create an aws account .
   6. Create an IAM user for the account and get the aws_access_key_id and aws_secret_access_key, save them in file ~/.boto in the format given below:
-    `[Credentials]`
-    `aws_access_key_id=<your access key id>`
-    `aws_secret_access_key=<your secret access key>`
-
+    ```
+    [Credentials]
+    aws_access_key_id=<your access key id>
+    aws_secret_access_key=<your secret access key>
+    
+    ```
 Boto reads credentials from file ~/.boto in unix platform and from C:\Users\<username>\boto.config in windows platform
 
 ##Steps to get started:
@@ -39,6 +41,6 @@ in case you see something like:
  1. http://boto.cloudhackers.com/en/latest/
  2. http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html
  3. http://docs.ansible.com/ansible/playbooks_intro.html
- 4.  http://mattupstate.com/python/devops/2012/08/07/flask-wsgi-application-deployment-with-ubuntu-ansible-nginx-supervisor-and-uwsgi.html
+ 4. http://mattupstate.com/python/devops/2012/08/07/flask-wsgi-application-deployment-with-ubuntu-ansible-nginx-supervisor-and-uwsgi.html
 
 
