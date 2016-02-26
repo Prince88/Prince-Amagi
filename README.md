@@ -122,6 +122,11 @@ This function creates and launches an t2.micro instances of ubuntu(ami-9abea4fb)
 This function updates the hosts file under devops folder with the public dns name of the newly created instance, further it uses anisble-playbook to execute commands based on the file setup_server.yml and setups the server with initial requirements. It also reads deploy.yml under devops folder and deploys the flask app on the server using supervisorctl module.
 
 
+##How to verify solution:
+Please login into your EC2 instance
+```sudo superviorctl```
+will show if the flask app is running on not, The flask app should be running on localhost:9090
+
 
 ##References:
  1. http://boto.cloudhackers.com/en/latest/
@@ -129,5 +134,6 @@ This function updates the hosts file under devops folder with the public dns nam
  3. http://docs.ansible.com/ansible/playbooks_intro.html
  4. https://www.digitalocean.com/community/tutorials/understanding-the-nginx-configuration-file-structure-and-configuration-contexts 
  5. http://mattupstate.com/python/devops/2012/08/07/flask-wsgi-application-deployment-with-ubuntu-ansible-nginx-supervisor-and-uwsgi.html
+ 6. http://uwsgi-docs.readthedocs.org/en/latest/WSGIquickstart.html
 
 
